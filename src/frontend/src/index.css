@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 1.25rem;
+
+    /* Cute Finds Hub — soft pastel palette */
+    /* Background: cream #FFF8F0 */
+    --background: 0.98 0.012 80;
+    --foreground: 0.32 0.02 340;
+
+    /* Card: white-ish soft */
+    --card: 0.99 0.006 80;
+    --card-foreground: 0.32 0.02 340;
+
+    --popover: 0.99 0.006 80;
+    --popover-foreground: 0.32 0.02 340;
+
+    /* Primary: pink #FFB6C1 */
+    --primary: 0.8 0.1 10;
+    --primary-foreground: 0.99 0.006 80;
+
+    /* Secondary: lavender #E6E6FA */
+    --secondary: 0.9 0.05 295;
+    --secondary-foreground: 0.32 0.02 340;
+
+    /* Muted: soft cream */
+    --muted: 0.95 0.01 80;
+    --muted-foreground: 0.55 0.02 340;
+
+    /* Accent: baby blue #BFDBFE */
+    --accent: 0.88 0.06 225;
+    --accent-foreground: 0.32 0.02 340;
+
+    --destructive: 0.55 0.24 25;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.9 0.03 10;
+    --input: 0.9 0.03 10;
+    --ring: 0.8 0.1 10;
+
+    --chart-1: 0.8 0.1 10;
+    --chart-2: 0.88 0.06 225;
+    --chart-3: 0.9 0.05 295;
+    --chart-4: 0.85 0.07 50;
+    --chart-5: 0.82 0.08 160;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Nunito", system-ui, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  /* Pastel gradient background */
+  .cute-bg {
+    background: linear-gradient(
+      135deg,
+      oklch(0.95 0.04 10) 0%,
+      oklch(0.95 0.03 295) 35%,
+      oklch(0.94 0.04 225) 65%,
+      oklch(0.97 0.02 80) 100%
+    );
+  }
+
+  .cute-bg-alt {
+    background: linear-gradient(
+      135deg,
+      oklch(0.94 0.04 295) 0%,
+      oklch(0.95 0.04 10) 50%,
+      oklch(0.96 0.03 80) 100%
+    );
+  }
+
+  /* Product card */
+  .product-card {
+    background: oklch(var(--card));
+    box-shadow: 0 2px 12px oklch(0.8 0.1 10 / 0.1), 0 6px 24px
+      oklch(0.8 0.1 10 / 0.06);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow
+      0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 28px oklch(0.8 0.1 10 / 0.18), 0 16px 48px
+      oklch(0.8 0.1 10 / 0.1);
+  }
+}
+
+/* Fade-in-up animation for product cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
